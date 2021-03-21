@@ -3,11 +3,13 @@
         <div class="form-group">
           <label for="Email">Email address</label>
           <input type="email" class="form-control" id="email" formControlName="email"  placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <app-field-error-display [displayError]="isRegisterFieldValid('email')" errorMsg="* Enter valid email"></app-field-error-display>
         </div>
         <div class="form-group">
           <label for="Password">Password</label>
           <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+          <app-field-error-display [displayError]="isRegisterFieldValid('password')" errorMsg="* Enter valid password"></app-field-error-display>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <button type="submit" (click)="register(formGroupRegister)" class="btn btn-primary">Register</button>
       </form>

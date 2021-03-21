@@ -12,6 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { DatePipe } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
+import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterComponent,
     MyTasksComponent,
     NavBarComponent,
+    FieldErrorDisplayComponent,
     
   ],
   imports: [

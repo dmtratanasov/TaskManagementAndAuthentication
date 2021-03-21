@@ -19,18 +19,17 @@ export class RegisterComponent implements OnInit {
     private _usersService: UsersService) {
 
     this.formGroupRegister = this.formBuilder.group({
-      email: ['', Validators.email],
-      password: ['', Validators.required]
+      email: ['', Validators.minLength(4)],
+      password: ['', Validators.minLength(4)]
     });
   }
 
 
-  public isRegisterFieldValid(field: string) {
-    return !this.formGroupRegister.get(field).valid && (this.formGroupRegister.get(field).dirty || this.formGroupRegister.get(field).touched);
+  ngOnInit(): void {
   }
 
-
-  ngOnInit(): void {
+  public isRegisterFieldValid(field: string) {
+    return !this.formGroupRegister.get(field).valid && (this.formGroupRegister.get(field).dirty || this.formGroupRegister.get(field).touched);
   }
 
   register(formData): void {

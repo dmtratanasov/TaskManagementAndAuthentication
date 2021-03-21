@@ -18,10 +18,11 @@
         </ul>
         <ng-template #elseBlock>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" routerLink='/login'>
+                <li><img style="border-radius:50%; height:35px; width:35px; vertical-align:middle" src="../../assets/loggeduser.jpg"></li>
+                <li style="align-self: center;" class="nav-item">
                     {{currentUser.email}}
                 </li>
-                <li class="nav-item" (click)="logout()" >
+                <li style="align-self: center;" class="nav-item" (click)="logout()" >
                    Logout
                 </li>
             </ul>

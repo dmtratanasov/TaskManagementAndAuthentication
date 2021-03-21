@@ -50,14 +50,17 @@
                   <div class="todo-list" >
                       <div class="todo-item" style="display: flex;justify-content:space-between" *ngFor="let task of todoTasks">
                         <div>
-                          <span>{{task.description}}</span>
+                          <span>Description: {{task.description}}</span>
+                        </div>
+                        <div>
+                          <span>From: {{this.datePipe.transform(task.from,'MM/dd/yyyy')}}</span>
+                        </div>
+                        <div>
+                          <span>To: {{this.datePipe.transform(task.to,'MM/dd/yyyy')}}</span>
                         </div>
                           <div style="display:flex;align-self: center">
                             <div (click)="deleteTask(task.id)">
                               <i class="bi bi-trash-fill" style="color: red;" ></i>
-                            </div>
-                            <div>
-                              <i class="bi bi-info-circle-fill" style="color: blue;"></i>
                             </div>
                             <div (click)="switchToEditingTask(task.id)">
                               <i class="bi bi-pencil-fill"></i>
@@ -71,14 +74,17 @@
                     <div class="todo-list">
                       <div class="inprogress-item" style="display: flex;justify-content:space-between" *ngFor="let task of inProgressTasks">
                         <div>
-                          <span>{{task.description}}</span>
+                          <span>Description: {{task.description}}</span>
+                        </div>
+                        <div>
+                          <span>From: {{this.datePipe.transform(task.from,'MM/dd/yyyy')}}</span>
+                        </div>
+                        <div>
+                          <span>To: {{this.datePipe.transform(task.to,'MM/dd/yyyy')}}</span>
                         </div>
                         <div style="display:flex;align-self: center">
                           <div (click)="deleteTask(task.id)">
                             <i class="bi bi-trash-fill" style="color: red;" ></i>
-                          </div>
-                          <div>
-                            <i class="bi bi-info-circle-fill" style="color: blue;"></i>
                           </div>
                           <div (click)="switchToEditingTask(task.id)">
                             <i class="bi bi-pencil-fill"></i>
@@ -92,14 +98,17 @@
                     <div class="todo-list">
                       <div class="done-item" style="display: flex;justify-content:space-between" *ngFor="let task of doneTasks">
                         <div>
-                          <span>{{task.description}}</span>
+                          <span>Description: {{task.description}}</span>
+                        </div>
+                        <div>
+                          <span>From: {{this.datePipe.transform(task.from,'MM/dd/yyyy')}}</span>
+                        </div>
+                        <div>
+                          <span>To: {{this.datePipe.transform(task.to,'MM/dd/yyyy')}}</span>
                         </div>
                         <div style="display:flex;align-self: center">
                           <div (click)="deleteTask(task.id)">
                             <i class="bi bi-trash-fill" style="color: red;" ></i>
-                          </div>
-                          <div>
-                            <i class="bi bi-info-circle-fill" style="color: blue;"></i>
                           </div>
                           <div (click)="switchToEditingTask(task.id)">
                             <i class="bi bi-pencil-fill"></i>
