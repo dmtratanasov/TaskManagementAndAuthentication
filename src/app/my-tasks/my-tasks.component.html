@@ -1,0 +1,115 @@
+<div class="container" style="margin: 30px auto;">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card card-white">
+              <div class="card-body">
+                <h3>Add New Task:</h3>
+                  <form [formGroup]="formGroupNewTask" style="display: flex;">
+                    <div style="width: 50%;margin:0 10px">
+                      <h5>Description:</h5>
+                      <input type="text" class="form-control add-task newTaskInput" formControlName="description">
+                      <h5>From:</h5>
+                      <input type="date" class="form-control add-task newTaskInput" formControlName="from" placeholder="From">
+                    </div>
+                    <div style="width: 50%;margin:0 10px">
+                      <h5>Status:</h5>
+                      <select id="status" class="form-control add-task newTaskInput" formControlName="status">
+                        <option *ngFor="let key of keys" [value]="statuses[key]">{{statuses[key]}}</option>
+                      </select>
+                      <h5>To:</h5>
+                      <input type="date" class="form-control add-task newTaskInput" formControlName="to" placeholder="To">
+                      <div *ngIf="editingState; else elseBlock">
+                        <button style="background-color: dodgerblue;"  type="submit" style="float: right;" class="btn btn-success" (click)="updateTask(taskToEdit)">
+                          Update Task
+                          <img src="./assets/loading.gif" *ngIf="isLoading" class="btn-loading-img" />
+                        </button>
+                        <button style="background-color: dodgerblue;"  type="submit" style="float: right;" class="btn btn-success" (click)="toggleEditingState()">
+                          Cancel
+                        </button>
+                      </div>
+                      <ng-template #elseBlock>
+                        <div>
+                          <button style="background-color: dodgerblue;"  type="submit" style="float: right;" class="btn btn-success" (click)="addTask(formGroupNewTask)">
+                            Add Task
+                            <img src="./assets/loading.gif" *ngIf="isLoading" class="btn-loading-img"/>
+                          </button>
+                        </div>
+                      </ng-template>
+                    </div>
+                  </form>
+                  <div style="margin-bottom: 10px;">
+                    <ul class="nav nav-pills todo-nav">
+                      <li role="presentation" class="nav-item all-task active" (click)="filteringTasks('All')"><span class="filter">All</span></li>
+                      <li role="presentation" class="nav-item active-task" (click)="filteringTasks('To do')"><span class="filter">Todo</span></li>
+                      <li role="presentation" class="nav-item completed-task" (click)="filteringTasks('Work In Progress')"><span class="filter">Work In Progress</span></li>
+                      <li role="presentation" class="nav-item active-task" (click)="filteringTasks('Done')"><span class="filter">Done</span></li>
+                  </ul>
+                  </div>
+                  <div *ngIf="filterTasks == 'To do' || filterTasks == 'All'">
+                    <h3>To Do Tasks:</h3>
+                  <div class="todo-list" >
+                      <div class="todo-item" style="display: flex;justify-content:space-between" *ngFor="let task of todoTasks">
+                        <div>
+                          <span>{{task.description}}</span>
+                        </div>
+                          <div style="display:flex;align-self: center">
+                            <div (click)="deleteTask(task.id)">
+                              <i class="bi bi-trash-fill" style="color: red;" ></i>
+                            </div>
+                            <div>
+                              <i class="bi bi-info-circle-fill" style="color: blue;"></i>
+                            </div>
+                            <div (click)="switchToEditingTask(task.id)">
+                              <i class="bi bi-pencil-fill"></i>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+                  <div *ngIf="filterTasks == 'Work In Progress' || filterTasks == 'All'">
+                    <h3>Work In Progress Tasks:</h3>
+                    <div class="todo-list">
+                      <div class="inprogress-item" style="display: flex;justify-content:space-between" *ngFor="let task of inProgressTasks">
+                        <div>
+                          <span>{{task.description}}</span>
+                        </div>
+                        <div style="display:flex;align-self: center">
+                          <div (click)="deleteTask(task.id)">
+                            <i class="bi bi-trash-fill" style="color: red;" ></i>
+                          </div>
+                          <div>
+                            <i class="bi bi-info-circle-fill" style="color: blue;"></i>
+                          </div>
+                          <div (click)="switchToEditingTask(task.id)">
+                            <i class="bi bi-pencil-fill"></i>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+                  <div *ngIf="filterTasks == 'Done' || filterTasks == 'All'">
+                    <h3>Done Tasks:</h3>
+                    <div class="todo-list">
+                      <div class="done-item" style="display: flex;justify-content:space-between" *ngFor="let task of doneTasks">
+                        <div>
+                          <span>{{task.description}}</span>
+                        </div>
+                        <div style="display:flex;align-self: center">
+                          <div (click)="deleteTask(task.id)">
+                            <i class="bi bi-trash-fill" style="color: red;" ></i>
+                          </div>
+                          <div>
+                            <i class="bi bi-info-circle-fill" style="color: blue;"></i>
+                          </div>
+                          <div (click)="switchToEditingTask(task.id)">
+                            <i class="bi bi-pencil-fill"></i>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

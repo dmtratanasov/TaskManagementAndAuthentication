@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <span routerLink='/mytasks' style="cursor: pointer;" class="navbar-brand">Angular Test</span>
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" routerLink='/mytasks'>
+                My Tasks
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul *ngIf="currentUser == null; else elseBlock" class="navbar-nav ml-auto">
+            <li class="nav-item" routerLink='/login'>
+                Login
+            </li>
+            <li class="nav-item" routerLink='/register'>
+               Register
+            </li>
+        </ul>
+        <ng-template #elseBlock>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" routerLink='/login'>
+                    {{currentUser.email}}
+                </li>
+                <li class="nav-item" (click)="logout()" >
+                   Logout
+                </li>
+            </ul>
+        </ng-template>
+    </div>
+</nav>

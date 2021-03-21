@@ -1,0 +1,15 @@
+.navbar-nav li {
+    color: white;
+    margin:5px;
+    cursor:pointer;
+}
+
+.navbar-nav li :focus {
+    color: white;
+    margin:5px;
+    cursor:pointer;
+}
+
+:focus{
+    outline: none;
+}
